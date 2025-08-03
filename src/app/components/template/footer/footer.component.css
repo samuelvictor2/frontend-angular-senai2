@@ -1,14 +1,16 @@
-.footer{
-    /*posição fixa*/
+.footer {
     position: fixed;
-    /*coloca toolbar na parte de baixa */
     bottom: 0;
     display: flex;
-    /*coloca no final da linha. sendo no lado direiro parte inferior*/
     justify-content: flex-end;
+    background-color: #FAF1E4;
+    padding: 10px 20px;
+    width: 100%;
+    border-top: 1px solid #E0C9A6;
 }
 
-.footer > span{
-    font-size: 1.1rem;
+.footer > span {
+    font-size: 0.95rem;
     font-weight: 300;
+    color: #8B5E3C;
 }

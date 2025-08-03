@@ -1,17 +1,14 @@
-.logo {
-    height: 40px;
-    vertical-align: middle;
-  }
-  
-  .header {
+.header {
     display: flex;
     align-items: center;
-    background-color: #A9744F;
-    color: #FFF2D8;
-  }
-  
-  .title-group {
-    margin-left: 10px;
+    background-color: #8B5E3C;
+    color: #FAF1E4;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.title-group {
+    margin-left: 12px;
     font-family: 'Playfair Display', serif;
-  }
-  
+    font-size: 1.4rem;
+}

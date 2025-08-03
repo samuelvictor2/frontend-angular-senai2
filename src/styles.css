@@ -3,6 +3,10 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+body {
+    background-color: #F5E8C7;
+}
+
 
 /*essa é classe css global, e podemos definir configurações para aplicar em outros arquivos*/
 .red{
