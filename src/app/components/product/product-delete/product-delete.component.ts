@@ -19,7 +19,7 @@ export class ProductDeleteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const proId = this.route.snapshot.paramMap.get('proId');
+    const proId = Number(this.route.snapshot.paramMap.get('proId')); // Convertido para número
     if (proId) {
       this.productService.readById(proId).subscribe(
         (product) => {
@@ -34,7 +34,7 @@ export class ProductDeleteComponent implements OnInit {
   }
 
   deleteProduct(): void {
-    if (this.product.proId) {  // Verifica se proId não é undefined ou null
+    if (this.product.proId) {
       this.productService.delete(this.product.proId).subscribe(
         () => {
           this.productService.showMessage('Produto excluído com sucesso!');

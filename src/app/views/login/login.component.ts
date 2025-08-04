@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,25 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username = '';
-  password = '';
-  erro = false;
-  sucesso = false;
 
-  constructor(private router: Router) {}
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    if (this.username === 'admin' && this.password === '1234') {
-      this.sucesso = true;
-      this.erro = false;
-
-      // Mostra a mensagem por 1 segundo, depois redireciona
-      setTimeout(() => {
-        this.router.navigate(['/vendas/create']);
-      }, 1000);
-    } else {
-      this.erro = true;
-      this.sucesso = false;
-    }
+    this.authService.login(this.username, this.password).subscribe({
+      next: () => this.router.navigate(['/']),
+      error: () => this.errorMessage = 'Usuário ou senha inválidos'
+    });
   }
 }

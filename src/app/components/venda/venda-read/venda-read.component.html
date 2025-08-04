@@ -1,22 +1,46 @@
-<mat-card *ngIf="vendas.length > 0">
-  <h3>Vendas Registradas:</h3>
-  <table mat-table [dataSource]="vendas">
-    <ng-container matColumnDef="clienteId">
-      <th mat-header-cell *matHeaderCellDef>ID do Cliente</th>
-      <td mat-cell *matCellDef="let venda">{{venda.clienteId}}</td>
-    </ng-container>
+<div class="venda-read-container">
+  <!-- Campo de busca por CPF -->
+  <mat-card class="mb-4 busca-cpf">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Buscar vendas por CPF</mat-label>
+      <input
+        matInput
+        [(ngModel)]="cpfBusca"
+        (keyup.enter)="filtrarPorCpf()"
+        placeholder="Digite o CPF do cliente (somente números)"
+      />
+      <button
+        mat-icon-button
+        *ngIf="cpfBusca"
+        matSuffix
+        aria-label="Limpar busca"
+        (click)="limparBusca()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-card>
 
-    <ng-container matColumnDef="itens">
-      <th mat-header-cell *matHeaderCellDef>Itens</th>
-      <td mat-cell *matCellDef="let venda">{{venda.itens.length}} Item(s)</td>
-    </ng-container>
+  <!-- Botão para exibir/ocultar formulário -->
+  <div class="text-end mb-3">
+    <button mat-raised-button color="primary" (click)="mostrarFormulario = !mostrarFormulario">
+      {{ mostrarFormulario ? 'Fechar formulário' : 'Nova Venda' }}
+    </button>
+  </div>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-</mat-card>
+  <!-- Formulário de nova venda -->
+  <app-venda-create
+    *ngIf="mostrarFormulario"
+    (vendaCriada)="onVendaCriada()"
+  ></app-venda-create>
 
-<!-- Caso não haja vendas -->
-<mat-card *ngIf="vendas.length === 0">
-  <p>Nenhuma venda registrada até o momento.</p>
-</mat-card>
+  <!-- Lista de vendas filtradas -->
+  <mat-card *ngFor="let venda of vendasFiltradas" class="mb-2">
+    <mat-card-title>Venda ID #{{ venda.id }}</mat-card-title>
+    <mat-card-subtitle>
+      Cliente: {{ getClienteNome(venda.cliId) }}<br />
+      Data: {{ venda.vendaData | date:'dd/MM/yyyy' }}<br />
+      Total: {{ venda.vendaValorTotal | currency:'BRL' }}
+    </mat-card-subtitle>
+  </mat-card>
+</div>

@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
@@ -20,10 +19,10 @@ export class ProductCreateComponent implements OnInit {
     proCodigoDeBarras: '',
     proMarca: '',
     proUnidadeMedida: '',
-    proAtivo: 'Sim', // valor padrão sugerido
-    proDataCadastro: new Date(),
-    proDataAtualizacao: new Date()
-  }
+    proAtivo: true,  // Alterado para booleano
+    proDataCadastro: new Date().toISOString(),  // Convertido para string ISO
+    proDataAtualizacao: new Date().toISOString()  // Convertido para string ISO
+  };
 
   constructor(
     private productService: ProductService,
@@ -33,6 +32,7 @@ export class ProductCreateComponent implements OnInit {
   ngOnInit(): void {}
 
   createProduct(): void {
+    // As datas já estão em formato ISO, portanto, não precisamos fazer mais nenhuma conversão aqui.
     this.productService.create(this.product).subscribe(() => {
       this.productService.showMessage('Produto criado!');
       this.router.navigate(['/products']);

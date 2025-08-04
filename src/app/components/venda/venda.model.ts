@@ -1,9 +1,15 @@
-export interface ItemVendaDTO {
-  produtoId: number;
-  quantidade: number;
+export interface CompraDTO {
+  proId: number;
+  compraQuantidade: number;
+  compraPrecoVenda: number;
 }
 
 export interface VendaDTO {
-  clienteId: number;
-  itens: ItemVendaDTO[];
+  id?: number;
+  vendaCodigo?: string;
+  vendaData?: string;
+  cliId: number;
+  fpgId: number;
+  vendaValorTotal: number;
+  compras: CompraDTO[];
 }

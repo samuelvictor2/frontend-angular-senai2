@@ -1,97 +1,17 @@
-/* Resetando o margin e padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Corpo da página */
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f2f2f2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  
-    background-size: cover;
-    background-position: center;
-  }
-  
-  /* Container de login */
-  .login-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Caixa de login */
-  .login-box {
-    background-color: rgba(255, 255, 255, 0.9); /* Fundo leve e transparente */
-    border-radius: 10px;
-    padding: 40px 50px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-  }
-  
-  /* Título */
-  h2 {
-    color: #8B4513; /* Cor quente, lembrando o tom de pão fresco */
-    font-family: 'Courier New', Courier, monospace;
-    margin-bottom: 20px;
-  }
-  
-  /* Grupo de input */
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 1px solid #d1a15c;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #333;
-  }
-  
-  input:focus {
-    outline: none;
-    border-color: #8B4513;
-  }
-  
-  /* Botão de login */
-  .login-btn {
-    width: 100%;
-    padding: 14px 20px;
-    background-color: #d17a3b; /* Cor de pão, remete ao tom de croissant */
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-btn:hover {
-    background-color: #8B4513; /* Cor escura para o efeito de hover */
-  }
-  
-  /* Mensagem de erro */
-  .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-  }
-  
-  /* Responsividade */
-  @media (max-width: 600px) {
-    .login-box {
-      padding: 30px 20px;
-    }
-  }
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
