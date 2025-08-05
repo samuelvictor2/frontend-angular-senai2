@@ -96,7 +96,7 @@ export class VendaCreateComponent implements OnInit {
           panelClass: ['msg-success']
         });
         this.limparFormulario();
-        this.vendaCriada.emit(); // avisa o pai que uma venda foi criada
+        this.vendaCriada.emit();
       },
       error => {
         console.error('Erro ao criar a venda', error);

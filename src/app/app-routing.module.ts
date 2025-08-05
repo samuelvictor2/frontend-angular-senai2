@@ -36,11 +36,13 @@ import { VendaReadComponent } from './components/venda/venda-read/venda-read.com
 // Login
 import { AuthGuard } from './services/auth.guard';
 import { LoginComponent } from './views/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 // Guard para proteger rotas (exemplo, você pode criar um AuthGuard)
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: DashboardComponent },
 
   { path: 'login', component: LoginComponent },
 

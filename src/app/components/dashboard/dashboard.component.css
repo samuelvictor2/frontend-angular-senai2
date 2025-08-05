@@ -1,0 +1,57 @@
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #F5E8C7; /* Pode ser #121212 para dark mode */
+  font-family: "Roboto", sans-serif;
+}
+
+.dashboard-card {
+  background-color: #ffffff;
+  color: #333;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.dashboard-header mat-icon {
+  font-size: 28px;
+  color: inherit;
+}
+
+.dashboard-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Cores específicas por tipo */
+.dashboard-card.lucro {
+  border-left: 6px solid #4caf50;
+}
+
+.dashboard-card.vendas {
+  border-left: 6px solid #2196f3;
+}

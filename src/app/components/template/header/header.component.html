@@ -1,17 +1,18 @@
-<mat-toolbar class="header" met-elevation-z4>
-    <!--
-    <span>
-        <a routerLink="/">
-            <img class="logo" src="assets/img/logo.png" alt="logo">
-        </a>
-    </span>
-    -->
-    <span class="title-group">
-        <a>
-            <i class="material-icons">
-                home
-            </i>
-            BackControl
-        </a>
-    </span>
+<mat-toolbar color="primary" class="header" met-elevation-z4 style="justify-content: space-between;">
+
+  <span class="title-group">
+    <a>
+      <i class="material-icons">
+        
+      </i>
+      BackControl
+    </a>
+  </span>
+
+  <!-- Botão de logout só aparece se estiver logado -->
+  <button mat-button *ngIf="isLoggedIn()" (click)="logout()" style="color: white;">
+    Sair
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+
 </mat-toolbar>
