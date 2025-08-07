@@ -1,5 +1,23 @@
-<button mat-raised-button (click)="navigateToFormaPagamentoCreate()" color="primary">
-    Nova Forma de Pagamento
-</button>
-
-<app-forma-pagamento-read></app-forma-pagamento-read>
+<div class="forma-pagamento-crud-container">
+    <!-- Botão para adicionar nova forma de pagamento -->
+    <button mat-raised-button (click)="navigateToFormaPagamentoCreate()" color="primary">
+      Nova Forma de Pagamento
+    </button>
+  
+    <!-- Campo de pesquisa para filtrar formas de pagamento -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Buscar Forma de Pagamento</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="filterFormaPagamento()"
+        placeholder="Digite a descrição"
+        class="pesquisa"
+      />
+    </mat-form-field>
+  
+    <!-- Componente de leitura para mostrar as formas de pagamento filtradas -->
+    <app-forma-pagamento-read [fpagamentos]="filteredFormaPagamentos"></app-forma-pagamento-read>
+  </div>
+  

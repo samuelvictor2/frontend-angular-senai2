@@ -1,5 +1,19 @@
-<button mat-raised-button (click)="navigateToProductCreate()" color="primary">
+<div class="product-crud-container">
+  <button mat-raised-button (click)="navigateToProductCreate()" color="primary">
     Novo Produto
-</button>
+  </button>
 
-<app-product-read></app-product-read>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Buscar produto</mat-label>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="filterProduct()"
+      placeholder="Digite o nome do produto"
+      class="pesquisa"
+    />
+  </mat-form-field>
+
+  <app-product-read [products]="filteredProducts"></app-product-read>
+</div>
