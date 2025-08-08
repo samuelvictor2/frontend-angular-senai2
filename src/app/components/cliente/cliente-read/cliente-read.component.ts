@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ClienteService } from '../clientes.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { ClienteDTO } from '../clienteDTO.model';
 
 @Component({
@@ -9,15 +8,12 @@ import { ClienteDTO } from '../clienteDTO.model';
 })
 export class ClienteReadComponent implements OnInit {
 
-  clientes!: ClienteDTO[];
-  displayedColumns = ['cliId', 'cliNome', 'cliCpf', 'conEmail', 'conCelular', 'action'];
+  @Input() clientes: ClienteDTO[] = []; // Recebe os clientes filtrados
+  displayedColumns = ['cliId', 'cliNome', 'cliCpf', 'conEmail', 'conCelular', 'action']; // Definindo as colunas a serem exibidas
 
-  constructor(private clienteService: ClienteService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.clienteService.read().subscribe(clientes => {
-      this.clientes = clientes;
-      console.log(clientes);
-    });
+    // Inicialmente, a lista de clientes já é passada ao componente
   }
 }

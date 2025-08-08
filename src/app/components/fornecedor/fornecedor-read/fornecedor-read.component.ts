@@ -9,22 +9,21 @@ import { FornecedorService } from '../fornecedor.service';
 })
 export class FornecedorReadComponent implements OnInit {
 
-  fornecedores: FornecedorDTO[] = [];  // Inicializado com um array vazio
-  displayedColumns = ['forId', 'forNomeFantasia', 'forCnpj', 'forRazaoSocial', 'action'];
+  fornecedores: FornecedorDTO[] = [];  // Inicializa o array de fornecedores
+  displayedColumns = ['forId', 'forNomeFantasia', 'forCnpj', 'forRazaoSocial', 'action'];  // Define as colunas a serem exibidas
 
   constructor(private fornecedorService: FornecedorService) { }
 
   ngOnInit(): void {
-    // Chama o método getAll para obter a lista de fornecedores
+    // Chama o serviço para obter a lista de fornecedores
     this.fornecedorService.getAll().subscribe(
       (fornecedores) => {
-        console.log(fornecedores);  // Verifique no console a estrutura da resposta
-        this.fornecedores = fornecedores; // Atribui a resposta à variável fornecedores
+        console.log(fornecedores);  // Verifica no console a estrutura da resposta
+        this.fornecedores = fornecedores;  // Atribui os fornecedores à variável fornecedores
       },
       (error) => {
-        console.error('Erro ao carregar fornecedores:', error);
+        console.error('Erro ao carregar fornecedores:', error);  // Exibe erro no console, se houver
       }
     );
   }
-
 }

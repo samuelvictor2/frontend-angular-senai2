@@ -9,45 +9,48 @@ import { ClienteDTO } from './clienteDTO.model';
 })
 export class ClienteService {
 
-  baseUrl = 'http://localhost:8080/clientes';
+  baseUrl = 'http://localhost:8080/clientes';  // URL da sua API
 
   constructor(
-    private snackBar: MatSnackBar,
-    private http: HttpClient
+    private snackBar: MatSnackBar,  // MatSnackBar para exibir mensagens
+    private http: HttpClient       // HttpClient para fazer as requisições HTTP
   ) {}
 
-  // Alterado para exibir as classes de erro ou sucesso com base no valor de 'isError'
+  // Exibe uma mensagem de sucesso ou erro
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
-      duration: 3000,
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
-      panelClass: isError ? ['msg-error'] : ['msg-success']  // Aplicando as classes CSS para erro ou sucesso
+      duration: 3000,  // Exibe a mensagem por 3 segundos
+      horizontalPosition: 'right',  // Alinha a mensagem à direita
+      verticalPosition: 'top',      // Alinha a mensagem ao topo
+      panelClass: isError ? ['msg-error'] : ['msg-success']  // Estilo da mensagem (erro ou sucesso)
     });
   }
 
+  // Cria um novo cliente
   create(cliente: ClienteDTO): Observable<ClienteDTO> {
     return this.http.post<ClienteDTO>(this.baseUrl, cliente);
   }
 
+  // Lê todos os clientes
   read(): Observable<ClienteDTO[]> {
     return this.http.get<ClienteDTO[]>(this.baseUrl);
   }
 
-  // Corrigido para 'cliId' ser um número
+  // Lê um cliente específico por ID
   readById(cliId: number): Observable<ClienteDTO> {
     const url = `${this.baseUrl}/${cliId}`;
     return this.http.get<ClienteDTO>(url);
   }
 
+  // Atualiza os dados de um cliente existente
   update(cliente: ClienteDTO): Observable<ClienteDTO> {
     const url = `${this.baseUrl}/${cliente.cliId}`;
     return this.http.put<ClienteDTO>(url, cliente);
   }
 
-  // Corrigido para 'cliId' ser um número
+  // Deleta um cliente pelo ID
   delete(cliId: number): Observable<void> {
     const url = `${this.baseUrl}/${cliId}`;
-    return this.http.delete<void>(url); // Alterado para 'void', pois não retorna dados
+    return this.http.delete<void>(url);  // Deleta sem retornar dados
   }
 }
